@@ -5,7 +5,6 @@ const Tasks = () => {
     return (
         <div>
             <h1>Tasks Page</h1>
-            <Link href={"/"}>Home</Link>
         </div>
     )
 }

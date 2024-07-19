@@ -5,7 +5,6 @@ const Prisma = () => {
     return (
         <div>
             <h1>Prisma Page</h1>
-            <Link href={"/"}>Home</Link>
         </div>
     )
 }

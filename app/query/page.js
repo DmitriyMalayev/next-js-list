@@ -5,7 +5,6 @@ const Query = () => {
     return (
         <div>
             <h1>Query Page</h1>
-            <Link href={"/"}>Home</Link>
         </div>
     )
 }
