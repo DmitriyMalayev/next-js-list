@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import SingleDrink from './[id]/page'
-import DrinksList from '@/components/DrinksList'
+import DrinksList from '@/app/components/DrinksList'
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a'
 
