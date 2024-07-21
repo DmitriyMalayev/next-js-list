@@ -22,7 +22,7 @@ const Drinks = async () => {
     return (
         <div>
             <h1>Drinks Page</h1>
-            <DrinksList drinks={newDrinks} />
+            <DrinksList newDrinks={newDrinks.drinks} />
         </div>
     )
 }

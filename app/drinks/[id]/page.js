@@ -3,8 +3,6 @@ import React from 'react'
 import Link from 'next/link'
 const searchDrinksURL = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
 
-
-
 const searchDrink = async (id) => {
     const resp = await fetch(`${searchDrinksURL}${id}`)
     if (!resp.ok) {
@@ -21,12 +19,23 @@ const SingleDrink = async ({ params }) => {
     const drinkInstructions = data?.drinks[0]?.strInstructions
 
     return (
-        <div>
-            <h1 className='text-blue-500'>{drinkName}</h1>
-            <p className='w-40 bg-slate-500'>{drinkInstructions}</p>
-            <Image src={drinkImage} alt={drinkName} width={200} height={200} />
-            <Link className="text-3xl" href='/drinks'>Back To Drinks</Link>
-        </div>
+        <>
+            <div className='grid sm:grid-cols-3 gap-2'>
+                <div className='col-span-3'>
+                    <h1 className='text-blue-500'>{drinkName}</h1>
+                </div>
+                <div className='col-span-1 flex justify-end'>
+                    <Image className='w-48 h-48 rounded-lg' width={300} height={300} src={drinkImage} alt={drinkName} />
+                </div>
+                <div className='col-span-1'>
+                    <p className=' bg-slate-500'>{drinkInstructions}</p>
+                </div>
+            </div>
+            <div className='mt-10'>
+
+                <Link className="text-xl mt-10" href='/drinks'>Back To Drinks</Link>
+            </div>
+        </>
     )
 }
 

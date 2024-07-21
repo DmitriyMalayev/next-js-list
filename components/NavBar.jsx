@@ -11,8 +11,8 @@ export const navLinks = [
 const NavBar = () => {
     return (
         <nav className="bg-base-300 py-4">
-            <div className="navbar px-8 max-w-6xl mx-auto flex-col sm:flex-row">
-                <Link href={"/"} className="btn btn-primary">Home</Link>
+            <div className="navbar px-8 max-w-6xl mx-auto flex-col sm:flex-row justify-center">
+                <Link href={"/"} className="btn btn-primary row-span-full">Home</Link>
                 <ul className="menu menu-horizontal md:ml-8">
                     {navLinks.map((link) => {
                         return (

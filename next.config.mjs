@@ -1,7 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // images: {
+    //     domains: ['www.thecocktaildb.com'],
+    // }
     images: {
-        domains: ['www.thecocktaildb.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'www.thecocktaildb.com',
+                port: '',
+                pathname: '/images/**',
+            }
+        ]
     }
 }
 

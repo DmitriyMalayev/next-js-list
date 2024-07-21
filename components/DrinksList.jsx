@@ -1,24 +1,31 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
-const DrinksList = ({ drinks }) => {
-    if (!drinks) {
+const DrinksList = ({ newDrinks }) => {
+    if (!newDrinks) {
         return (
-            <h1>No Drinks</h1>
+            <h1>No newDrinks</h1>
         )
     } else {
         return (
             <div>
-                <h1>Drinks List</h1>
-                {drinks.drinks.map((drink) => {
-                    return (
-                        <div key={drink.id}>
-                            <Link href={`/drinks/${drink.idDrink}`} >{drink.strDrink}</Link>
-                        </div>
-                    )
-                })
-                }
-            </div>
+                <h1>newDrinks List</h1>
+                <ul className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12'>
+                    {newDrinks.map((drink) => {
+                        return (
+                            <li key={drink.idDrink}>
+                                <Link className='text-xl font-medium' href={`/drinks/${drink.idDrink}`}>
+                                    <div className='relative h-52 w-32 mb-4 shadow-slate-200'>
+                                        <Image className='rounded-md object-cover hover:scale-110 transition duration-300 border shadow shadow-pink-300 ' src={drink.strDrinkThumb} alt={drink.strDrink} fill sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw' />
+                                    </div>
+                                    {drink.strDrink}
+                                </Link>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div >
         )
     }
 }
