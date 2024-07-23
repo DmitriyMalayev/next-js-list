@@ -7,6 +7,7 @@ export const navLinks = [
     { href: "/about", label: "About" },
     { href: "/drinks", label: "Drinks" },
     { href: "/tasks", label: "Tasks" },
+    { href: "/prisma-example", label: "Prisma" },
     { href: "/client", label: "Client" },
     { href: "/contact", label: "Contact" },
 ]
