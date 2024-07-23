@@ -20,7 +20,7 @@ const NavBar = () => {
                 <ul className="menu menu-horizontal md:ml-8">
                     {navLinks.map((link) => {
                         return (
-                            <li>
+                            <li key={link.href}>
                                 <Link className={`${pathname === link.href ? "text-blue-500 focus:text-blue-500 underline " : "text-blue-100"}`} key={link.href} href={link.href}  >{link.label}</Link>
                             </li>
                         )
