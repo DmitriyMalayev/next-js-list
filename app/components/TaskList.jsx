@@ -1,5 +1,6 @@
 import React from 'react'
 import prisma from '@/utils/db'
+import DeleteForm from './DeleteForm'
 
 
 const TaskList = async () => {
@@ -17,9 +18,10 @@ const TaskList = async () => {
                 <h1 className='text-3xl text-emerald-600'>Task List</h1>
                 {tasks.map((task) => {
                     return (
-                        <div key={task.id}>
-                            <a></a>
+                        <div key={task.id} className='flex justify-between'>
                             <h2 className={`${task.completed ? "text-green-500" : "text-red-500"}`}>{task.content}</h2>
+                            <DeleteForm task={task} />
+
                         </div>
                     )
                 })}
