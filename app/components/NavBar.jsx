@@ -4,11 +4,11 @@ import { usePathname } from 'next/navigation'
 
 export const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/drinks", label: "Drinks" },
-    { href: "/tasks", label: "Tasks" },
-    { href: "/prisma-example", label: "Prisma" },
     { href: "/client", label: "Client" },
+    { href: "/drinks", label: "Drinks" },
+    { href: "/prisma-example", label: "Prisma" },
+    { href: "/tasks", label: "Tasks" },
+    { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
 ]
 
