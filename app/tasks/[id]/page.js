@@ -3,20 +3,23 @@ import React from 'react'
 import Link from 'next/link'
 
 import prisma from '@/utils/db'
+import { editTask, getTask } from '@/utils/actions'
+import EditForm from '@/app/components/EditForm'
 
 const SingleTask = async ({ params }) => {
-    const searchTask = await prisma.task.findUnique({
-        where: { id: params.id },
-    })
+    const task = await getTask(params.id)
+    // const editTask = await editTask(params.id) 
+
+    // const searchTask = await prisma.task.findUnique({
+    //     where: { id: params.id },
+    // })
 
     return (
         <>
-            <div className='grid sm:grid-cols-3 gap-2'>
-                <div className='col-span-3'>
-                    <h1 className='text-blue-500'>{searchTask.content}</h1>
-                    <h1 className='text-blue-500'>{searchTask.completed}</h1>
-                </div>
+            <div>
+                <Link href={"/tasks"} className='btn btn-accent'>Back to Tasks</Link>
             </div>
+                <EditForm task={task} />
         </>
     )
 }
