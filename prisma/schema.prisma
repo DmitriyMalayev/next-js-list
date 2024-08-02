@@ -16,6 +16,6 @@ datasource db {
 model Task {
   id String @id @default(uuid())
   content String
-  createAt DateTime @default(now())
+  createdAt DateTime @default(now())
   completed Boolean @default(false)
 }

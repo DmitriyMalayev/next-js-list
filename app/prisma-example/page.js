@@ -16,7 +16,7 @@ const prismaHandlers = async () => {
         },
     })
     const allTasks = await prisma.task.findMany({
-        orderBy: { createAt: 'desc' },
+        orderBy: { createdAt: 'desc' },
     })
     return allTasks
 }
