@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 
+button:disabled{
+    @apply bg-red-500 text-white cursor-not-allowed !important;
+}

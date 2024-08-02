@@ -11,6 +11,7 @@ export const getTaskList = async () => {
     })
 }
 export const createTask = async (formData) => {
+    await new Promise((resolve) => setTimeout(resolve, 3000)) 
     const content = formData.get('taskName')
     await prisma.task.create({
         data: { content },
