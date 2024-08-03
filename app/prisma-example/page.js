@@ -3,18 +3,18 @@ import prisma from '@/utils/db'
 
 const prismaHandlers = async () => {
 
-    await prisma.task.create({
-        data: {
-            content: 'This is not a completed tasks.',
-            completed: false,
-        },
-    })
-    await prisma.task.create({
-        data: {
-            content: 'This is a completed tasks.',
-            completed: true,
-        },
-    })
+    // await prisma.task.create({
+    //     data: {
+    //         content: 'This is not a completed tasks.',
+    //         completed: false,
+    //     },
+    // })
+    // await prisma.task.create({
+    //     data: {
+    //         content: 'This is a completed tasks.',
+    //         completed: true,
+    //     },
+    // })
     const allTasks = await prisma.task.findMany({
         orderBy: { createdAt: 'desc' },
     })

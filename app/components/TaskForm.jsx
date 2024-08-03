@@ -1,8 +1,8 @@
 "use client"
-import React, { useEffect, useState } from 'react';
-import { useFormStatus, useFormState } from "react-dom"; 
+import React, { useEffect } from 'react';
+import { useFormStatus, useFormState } from "react-dom";
 import { createTask } from '@/utils/actions';
-
+import toast from 'react-hot-toast';
 
 const SubmitButton = () => {
   const { pending } = useFormStatus()
@@ -20,22 +20,23 @@ const initialFormState = {
 
 const TaskForm = () => {
   const [state, formAction] = useFormState(createTask, initialFormState)
-  const [showMessage, setShowMessage] = useState(false)
 
   useEffect(() => {
-    if (state.message) {
-      setShowMessage(true)
-      setTimeout(() => setShowMessage(false), 3000)
-      return () => clearTimeout()
+    if (state.message === "error") {
+      toast.error("There was an error")
+      return
     }
-  }, [state.message])
+    if (state.message === "success") {
+      toast.success("Successfully added a new task")
+      return
+    }
+
+  }, [state])
 
   return (
     <form action={formAction} className='mt-10'>
-      {state.message ? <div className={`text-center text-red-500 fade-out transition-opacity duration-500 ${showMessage ? 'opacity-100' : 'opacity-0'
-        }`}>{state.message}</div> : null}
       <div className='join w-full flex'>
-        <input className='input input-bordered join-item w-full' type='text' placeholder='Add a new task' name='taskName' required />
+        <input className='input input-bordered join-item w-full' type='text' placeholder='Add a new task' name='content' required />
         <SubmitButton />
       </div>
     </form>

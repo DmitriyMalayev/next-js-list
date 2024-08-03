@@ -13,29 +13,38 @@ export const getTaskList = async () => {
 }
 
 export const createTask = async (prevState, formData) => {
-    await new Promise((resolve) => setTimeout(resolve, 3000))
-    const content = formData.get('taskName')
-    const taskSchema = z.object({
-        content: z.string().min(5).max(255),
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+
+    const content = formData.get('content')
+    const Task = z.object({
+        content: z.string().min(5),
     })
+
     try {
-        taskSchema.parse({ content })
+        Task.parse({ content })
         await prisma.task.create({
-            data: { content },
+            data: {
+                content,
+            },
         })
-        revalidatePath("/tasks")
-        return { message: "Task created successfully" }
+        revalidatePath('/tasks')
+        return { message: 'success' }
 
     } catch (error) {
-        return { message: "Message" }
+        return { message: 'error' }
     }
 }
 
 
 export const deleteTask = async (formData) => {
     const id = formData.get('id')
-    await prisma.task.delete({ where: { id } })
-    revalidatePath("/tasks")
+    try {
+        await prisma.task.delete({ where: { id } })
+        revalidatePath("/tasks")
+        return { message: 'deleted' }
+    } catch (error) {
+        return { message: 'unable to be deleted' }
+     }
 }
 
 
