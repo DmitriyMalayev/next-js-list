@@ -2,6 +2,7 @@
 import prisma from '@/utils/db'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
+import { z } from 'zod'
 
 export const getTaskList = async () => {
     return await prisma.task.findMany({
@@ -14,15 +15,19 @@ export const getTaskList = async () => {
 export const createTask = async (prevState, formData) => {
     await new Promise((resolve) => setTimeout(resolve, 3000))
     const content = formData.get('taskName')
+    const taskSchema = z.object({
+        content: z.string().min(5).max(255),
+    })
     try {
+        taskSchema.parse({ content })
         await prisma.task.create({
-            data: { content, completed: false },
+            data: { content },
         })
         revalidatePath("/tasks")
         return { message: "Task created successfully" }
 
     } catch (error) {
-        return { message: "Failed to create task" }
+        return { message: "Message" }
     }
 }
 
