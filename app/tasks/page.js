@@ -6,8 +6,7 @@ import TaskForm from '../components/TaskForm'
 
 const Tasks = () => {
     return (
-        <div className='max-w-lg'>
-            <h1>Tasks Page</h1>
+        <div className='max-w-lg '>
             <TaskForm />
             <TaskList />
         </div>

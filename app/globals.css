@@ -6,3 +6,12 @@
 button:disabled{
     @apply bg-red-500 text-white cursor-not-allowed !important;
 }
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.fade-out {
+  animation: fadeOut 5s ease-in-out forwards; /* 5-second animation */
+}
