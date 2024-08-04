@@ -35,7 +35,6 @@ export const createTask = async (prevState, formData) => {
     }
 }
 
-
 export const deleteTask = async (formData) => {
     const id = formData.get('id')
     try {
@@ -46,7 +45,6 @@ export const deleteTask = async (formData) => {
         return { message: 'unable to be deleted' }
      }
 }
-
 
 export const getTask = async (id) => {
     return prisma.task.findUnique({

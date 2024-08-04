@@ -1,13 +1,22 @@
 "use client"
 import { deleteTask } from '@/utils/actions'
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 const DeleteForm = ({ id }) => {
   const [showModal, setShowModal] = useState(false)
 
   const handleDelete = async (e) => {
     e.preventDefault()
-    deleteTask(new FormData(e.target))
-    setShowModal(false)
+
+    try {
+      await deleteTask(new FormData(e.target))
+      toast.success("Task deleted successfully")
+    } catch (error) {
+      toast.error("Error deleting task")
+      return
+    } finally {
+      setShowModal(false)
+    }
   }
 
   const handleCancel = (e) => {
