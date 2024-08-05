@@ -43,7 +43,7 @@ export const deleteTask = async (formData) => {
         return { message: 'deleted' }
     } catch (error) {
         return { message: 'unable to be deleted' }
-     }
+    }
 }
 
 export const getTask = async (id) => {
@@ -52,15 +52,21 @@ export const getTask = async (id) => {
     })
 }
 export const editTask = async (formData) => {
-    const id = formData.get('id')
-    const content = formData.get('content')
-    const completed = formData.get('completed')
+    const id = formData.id
+    const content = formData.content
+    const completed = formData.completed
 
-    await prisma.task.update({
-        where: { id },
-        data: { content, completed: completed === "on" ? true : false },
-    })
-    redirect("/tasks")
-
+    try {
+        await prisma.task.update({
+            where: { id },
+            data: { content, completed },
+        })
+        revalidatePath("/tasks")
+        return { message: 'success' }
+    } catch (error) {
+        return { message: 'error' }
+    } finally {
+        redirect('/tasks')
+    }
 }
 

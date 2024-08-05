@@ -19,7 +19,6 @@ const Drinks = async () => {
     console.log(newDrinks)
     return (
         <div>
-            <h1>Drinks Page</h1>
             <DrinksList newDrinks={newDrinks.drinks} />
         </div>
     )

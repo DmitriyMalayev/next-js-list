@@ -13,9 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} >
         <NavBar />
-        <main className="mx-auto w-96 ">
+        <main className="px-10 py-20 max-w-2xl mx-auto sm:flex-row justify-center ">
           <Providers>
             {children}
           </Providers>

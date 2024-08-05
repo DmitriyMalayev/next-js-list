@@ -11,6 +11,7 @@ const DeleteForm = ({ id }) => {
     try {
       await deleteTask(new FormData(e.target))
       toast.success("Task deleted successfully")
+
     } catch (error) {
       toast.error("Error deleting task")
       return
