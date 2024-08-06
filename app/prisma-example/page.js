@@ -2,18 +2,19 @@ import React from 'react'
 import prisma from '@/utils/db'
 
 const prismaHandlers = async () => {
-    await prisma.task.create({
-        data: {
-            content: 'This is not a completed tasks.',
-            completed: false,
-        },
-    })
-    await prisma.task.create({
-        data: {
-            content: 'This is a completed tasks.',
-            completed: true,
-        },
-    })
+
+    // await prisma.task.create({
+    //     data: {
+    //         content: 'This is not a completed tasks.',
+    //         completed: false,
+    //     },
+    // })
+    // await prisma.task.create({
+    //     data: {
+    //         content: 'This is a completed tasks.',
+    //         completed: true,
+    //     },
+    // })
     const allTasks = await prisma.task.findMany({
         orderBy: { createdAt: 'desc' },
     })
@@ -22,7 +23,11 @@ const prismaHandlers = async () => {
 
 const PrismaTasks = async () => {
     const tasks = await prismaHandlers()
-
+    if (tasks.length === 0) {
+        return (
+            <h1 className='text-blue-400 my-10'>No tasks to show</h1>
+        )
+    }
     return (
         <div>
             <h1 className='text-3xl'>Prisma Example Page</h1>
