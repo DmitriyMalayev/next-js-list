@@ -20,7 +20,7 @@ const prismaHandlers = async () => {
     return allTasks
 }
 
-const PrismaTasks = async () => {
+const PrismaExample = async () => {
     const tasks = await prismaHandlers()
     if (tasks.length === 0) {
         return (
@@ -42,4 +42,4 @@ const PrismaTasks = async () => {
     )
 }
 
-export default PrismaTasks 
+export default PrismaExample 
