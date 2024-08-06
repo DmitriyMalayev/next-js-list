@@ -1,4 +1,3 @@
-import React from 'react'
 import prisma from '@/utils/db'
 
 const prismaHandlers = async () => {
